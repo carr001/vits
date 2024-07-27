@@ -476,7 +476,7 @@ class SynthesizerTrn(nn.Module):
       neg_cent4 = torch.sum(-0.5 * (m_p ** 2) * s_p_sq_r, [1], keepdim=True) # [b, 1, t_s]
       neg_cent = neg_cent1 + neg_cent2 + neg_cent3 + neg_cent4
 
-      attn_mask = torch.unsqueeze(x_mask, 2) * torch.unsqueeze(y_mask, -1)
+      attn_mask = torch.unsqueeze(x_mask, 2) * torch.unsqueeze(x_mask, -1)
       attn = monotonic_align.maximum_path(neg_cent, attn_mask.squeeze(1)).unsqueeze(1).detach()
 
     w = attn.sum(2)
