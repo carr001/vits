@@ -9,3 +9,8 @@ __pycache__
 build
 *.c
 monotonic_align/monotonic_align
+checkpoints/*
+checkpoints
+
+.DS_Store
+monotonic_align/monotonic_align.egg-info/
